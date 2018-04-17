@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 
 import ToDoForm from "./components/ToDoForm/ToDoForm";
 import ToDoList from "./components/ToDoList/ToDoList";
