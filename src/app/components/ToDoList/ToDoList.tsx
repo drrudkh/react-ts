@@ -15,15 +15,19 @@ export default class ToDoList extends React.Component<IProps, IState> {
     ...this.props
   };
 
-  onItemRemove = (item: any) => {
-    const todoArr: any = this.state.todos;
-    for (let i = 0; i < todoArr.length; i++) {
-      if (todoArr[i].id === parseInt(item)) {
-        todoArr.splice(i, 1);
-        this.setState({ todos: todoArr });
+  private onItemAdd = () => {
+    
+  }
+
+  private onItemRemove = (item: any) => {
+    const arr: any = this.state.todos;
+    arr.forEach( (todo: any, index: number) => {
+      if ( todo.id === parseInt(item) ) {
+        arr.splice(index, 1);
+        this.setState({todos: arr});
       }
-    }
-  };
+    })
+  }
 
   render() {
     return (
