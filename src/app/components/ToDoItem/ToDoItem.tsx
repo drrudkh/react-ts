@@ -1,22 +1,21 @@
-import React from 'react';
+import React from "react";
 
 interface IProps {
-    name: string,
-    key: number
+  name: string;
+  key: number;
+  id: number;
+  onItemRemove: (id: number) => void;
 }
 
-interface IState {
+const ToDoItem: React.SFC<IProps> = props => {
+  return (
+    <li>
+      {props.name}
+      <button onClick={() => props.onItemRemove(props.id)}>
+        Remove
+      </button>
+    </li>
+  );
+};
 
-}
-
-export default class ToDoItem extends React.Component<IProps, IState> {
-    static props: IProps
-
-    static state: IState
-
-    render() {
-        return (
-            <li>{this.props.name}</li>
-        )
-    }
-}
+export default ToDoItem;

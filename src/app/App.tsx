@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import ToDoList from './components/ToDoList';
+import ToDoList from './components/ToDoList/ToDoList';
 
 const TODOS: object[] =  [
     {
