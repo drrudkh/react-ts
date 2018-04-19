@@ -4,45 +4,24 @@ import ToDoItem from "../ToDoItem/ToDoItem";
 
 interface IProps {
   todos: object[];
+  onItemRemove: () => void
 }
 
-interface IState {
-  todos: object[];
+const ToDoList: React.SFC<IProps> = props => {
+  return (
+    <ul>
+      {props.todos.map((todo: any) => {
+        return (
+          <ToDoItem
+            name={todo.name}
+            key={todo.id}
+            id={todo.id.toString()}
+            onItemRemove={props.onItemRemove}
+          />
+        );
+      })}
+    </ul>
+  );
 }
 
-export default class ToDoList extends React.Component<IProps, IState> {
-  public state = {
-    ...this.props
-  };
-
-  private onItemAdd = () => {
-    
-  }
-
-  private onItemRemove = (item: any) => {
-    const arr: any = this.state.todos;
-    arr.forEach( (todo: any, index: number) => {
-      if ( todo.id === parseInt(item) ) {
-        arr.splice(index, 1);
-        this.setState({todos: arr});
-      }
-    })
-  }
-
-  render() {
-    return (
-      <ul>
-        {this.props.todos.map((todo: any) => {
-          return (
-            <ToDoItem
-              name={todo.name}
-              key={todo.id}
-              id={todo.id.toString()}
-              onItemRemove={this.onItemRemove}
-            />
-          );
-        })}
-      </ul>
-    );
-  }
-}
+export default ToDoList;
