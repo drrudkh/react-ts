@@ -26,13 +26,13 @@ export default class App extends React.Component<{}, IState> {
   private onItemAdd = () => {};
 
   private onItemRemove = (item: any) => {
-    // const arr: any = this.state.todos;
-    // arr.forEach((todo: any, index: number) => {
-    //   if (todo.id === parseInt(item)) {
-    //     arr.splice(index, 1);
-    //     this.setState({ todos: arr });
-    //   }
-    // });
+    const arr: any = this.state.todos;
+    arr.forEach((todo: any, index: number) => {
+      if (todo.id === parseInt(item)) {
+        arr.splice(index, 1);
+        this.setState({ todos: arr });
+      }
+    });
     console.log('clicked')
   };
 
