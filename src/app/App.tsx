@@ -3,7 +3,7 @@ import React from "react";
 import ToDoForm from "./components/ToDoForm/ToDoForm";
 import ToDoList from "./components/ToDoList/ToDoList";
 
-const TODOS: object[] = [
+const TODOS = [
   {
     id: 1,
     name: "Learn JS"
@@ -24,22 +24,22 @@ export default class App extends React.Component<{}, IState> {
   };
 
   private onItemAdd = (item: object): void => {
-    this.setState(state => ({
+    this.setState( state => ({
       todos: [...state.todos, item]
     }))
   };
 
   private onItemRemove = (item: any): void => {
-    const arr: any = this.state.todos;
-    arr.forEach((todo: any, index: number) => {
+    const todos = this.state.todos;
+    todos.forEach((todo: any, index: number) => {
       if (todo.id === parseInt(item)) {
-        arr.splice(index, 1);
-        this.setState({ todos: arr });
+        todos.splice(index, 1);
+        this.setState({ todos });
       }
     });
   };
 
-  render(): JSX.Element {
+  render() {
     return (
       <div>
         <ToDoForm onItemAdd={this.onItemAdd} arrLength={this.state.todos.length}/>

@@ -28,7 +28,7 @@ export default class ToDoForm extends React.Component<IProps, IState> {
     this.props.onItemAdd(this.state);
   };
 
-  render(): JSX.Element {
+  render() {
     return (
       <form onSubmit={this.onInputSubmit}>
         <input
