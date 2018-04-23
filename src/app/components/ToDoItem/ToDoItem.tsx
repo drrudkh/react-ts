@@ -4,16 +4,14 @@ interface IProps {
   name: string;
   key: number;
   id: number;
-  onItemRemove: (id: number) => void;
+  onItemRemove: (id: number) => any;
 }
 
 const ToDoItem: React.SFC<IProps> = props => {
   return (
     <li>
       {props.name}
-      <button onClick={() => props.onItemRemove(props.id)}>
-        Remove
-      </button>
+      <button onClick={() => props.onItemRemove(props.id)}>Remove</button>
     </li>
   );
 };

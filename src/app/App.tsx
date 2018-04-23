@@ -15,7 +15,7 @@ const TODOS: object[] = [
 ];
 
 interface IState {
-  todos: object[]
+  todos: object[];
 }
 
 export default class App extends React.Component<{}, IState> {
@@ -23,7 +23,12 @@ export default class App extends React.Component<{}, IState> {
     todos: TODOS
   };
 
-  private onItemAdd = () => {};
+  private onItemAdd = (item: any) => {
+    this.setState(state => ({
+      todos: [...state.todos, item]
+    }))
+    console.log(this.state);
+  };
 
   private onItemRemove = (item: any) => {
     const arr: any = this.state.todos;
@@ -33,17 +38,13 @@ export default class App extends React.Component<{}, IState> {
         this.setState({ todos: arr });
       }
     });
-    console.log('clicked')
   };
 
   render() {
     return (
       <div>
-        <ToDoForm />
-        <ToDoList
-          todos={this.state.todos}
-          onItemRemove={() => this.onItemRemove}
-        />
+        <ToDoForm onItemAdd={this.onItemAdd} arrLength={this.state.todos.length}/>
+        <ToDoList todos={this.state.todos} onItemRemove={this.onItemRemove} />
       </div>
     );
   }

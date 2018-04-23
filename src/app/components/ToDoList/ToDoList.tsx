@@ -4,7 +4,7 @@ import ToDoItem from "../ToDoItem/ToDoItem";
 
 interface IProps {
   todos: object[];
-  onItemRemove: () => void
+  onItemRemove: any;
 }
 
 const ToDoList: React.SFC<IProps> = props => {
@@ -22,6 +22,6 @@ const ToDoList: React.SFC<IProps> = props => {
       })}
     </ul>
   );
-}
+};
 
 export default ToDoList;
