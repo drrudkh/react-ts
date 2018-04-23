@@ -19,18 +19,17 @@ interface IState {
 }
 
 export default class App extends React.Component<{}, IState> {
-  public state: IState = {
+  public readonly state: IState = {
     todos: TODOS
   };
 
-  private onItemAdd = (item: any) => {
+  private onItemAdd = (item: object): void => {
     this.setState(state => ({
       todos: [...state.todos, item]
     }))
-    console.log(this.state);
   };
 
-  private onItemRemove = (item: any) => {
+  private onItemRemove = (item: any): void => {
     const arr: any = this.state.todos;
     arr.forEach((todo: any, index: number) => {
       if (todo.id === parseInt(item)) {
@@ -40,7 +39,7 @@ export default class App extends React.Component<{}, IState> {
     });
   };
 
-  render() {
+  render(): JSX.Element {
     return (
       <div>
         <ToDoForm onItemAdd={this.onItemAdd} arrLength={this.state.todos.length}/>

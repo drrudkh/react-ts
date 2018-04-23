@@ -1,8 +1,8 @@
 import React from "react";
 
 interface IProps {
-  onItemAdd: any;
   arrLength: number;
+  onItemAdd: (item: object) => void;
 }
 
 interface IState {
@@ -11,24 +11,24 @@ interface IState {
 }
 
 export default class ToDoForm extends React.Component<IProps, IState> {
-  public state: IState = {
+  public readonly state: IState = {
     id: null,
     name: ""
   };
 
-  onInputChange = (event: any) => {
+  private onInputChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     this.setState({
       id: this.props.arrLength + 1,
       name: event.target.value
     });
   };
 
-  onInputSubmit = (event: any) => {
+  private onInputSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
     this.props.onItemAdd(this.state);
   };
 
-  render() {
+  render(): JSX.Element {
     return (
       <form onSubmit={this.onInputSubmit}>
         <input
