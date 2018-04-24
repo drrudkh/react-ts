@@ -4,7 +4,7 @@ interface IProps {
   name: string;
   key: number;
   id: number;
-  onItemRemove: (id: number) => any;
+  onItemRemove: (id: number) => Function;
 }
 
 const ToDoItem: React.SFC<IProps> = props => {
