@@ -18,7 +18,11 @@ const METADATA = {
 
 module.exports = {
     mode: 'development',
-    entry: path.join(process.cwd(), 'src/main.tsx'),
+    devtool: 'eval-source-map',
+    entry: [
+        path.join(process.cwd(), 'src/main.tsx'),
+        // 'font-awesome/scss/font-awesome.scss'
+    ],
     output: {
         path: path.resolve('dist'),
         filename: '[name].[chunkhash].js'
@@ -26,7 +30,6 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.json', '.ts', '.tsx']
     },
-    devtool: 'eval-source-map',
     devServer: {
         stats: 'minimal'
     },
@@ -49,6 +52,13 @@ module.exports = {
             {
                 test: /\.scss$/,
                 use: ExtractTextPlugin.extract(['css-loader', 'sass-loader'])
+            },
+            {
+                test: /font-awesome\.config\.js/,
+                use: [
+                    { loader: 'style-loader' },
+                    { loader: 'font-awesome-loader' }
+                ]
             }
         ]
     }
