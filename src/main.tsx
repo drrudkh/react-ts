@@ -5,7 +5,7 @@ import { createStore } from "redux";
 
 // IMPORT COMPONENTS
 
-import App from "./app/App";
+import App from "./app/components/App";
 import reducers from './app/reducers/reducers';
 
 // IMPORT SASS`
