@@ -1,5 +1,5 @@
 {
-  "name": "test-boilerplate",
+  "name": "webstore",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -28,11 +28,11 @@
   "dependencies": {
     "@types/react": "^16.3.9",
     "@types/react-dom": "^16.0.5",
-    "@types/react-fontawesome": "^1.6.3",
-    "font-awesome": "^4.7.0",
+    "@types/react-redux": "^6.0.4",
     "npm": "^6.1.0",
-    "react": "^16.3.1",
+    "react": "^16.4.1",
     "react-dom": "^16.3.1",
-    "react-fontawesome": "^1.6.1"
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.0"
   }
 }

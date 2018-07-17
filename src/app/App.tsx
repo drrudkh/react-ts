@@ -1,11 +1,12 @@
 import React from "react";
-import Sidebar from "./components/Sidebar/Sidebar";
+
+import ProductList from "./containers/ProductList/ProductList";
+
+
 
 const App = () => {
   return (
-    <>
-      <Sidebar />
-    </>
+    <ProductList />
   );
 };
 

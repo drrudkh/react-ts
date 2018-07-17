@@ -9,7 +9,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 // METADATA
 
 const METADATA = {
-    title: 'Test Boilerplate',
+    title: 'Book Webstore',
     author: 'Apostol Tudor',
     description: 'Lorem Ipsum'
 }
@@ -20,15 +20,14 @@ module.exports = {
     mode: 'development',
     devtool: 'eval-source-map',
     entry: [
-        path.join(process.cwd(), 'src/main.tsx'),
-        // 'font-awesome/scss/font-awesome.scss'
+        path.join(process.cwd(), 'src/main.tsx')
     ],
     output: {
         path: path.resolve('dist'),
         filename: '[name].[chunkhash].js'
     },
     resolve: {
-        extensions: ['.js', '.json', '.ts', '.tsx']
+        extensions: ['.js', 'json', '.ts', '.tsx']
     },
     devServer: {
         stats: 'minimal'
@@ -52,13 +51,6 @@ module.exports = {
             {
                 test: /\.scss$/,
                 use: ExtractTextPlugin.extract(['css-loader', 'sass-loader'])
-            },
-            {
-                test: /font-awesome\.config\.js/,
-                use: [
-                    { loader: 'style-loader' },
-                    { loader: 'font-awesome-loader' }
-                ]
             }
         ]
     }
