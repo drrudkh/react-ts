@@ -1,10 +1,14 @@
 import React from "react";
 
-import ProductList from "../containers/ProductList/ProductList";
+import ProductList from "../components/ProductList/ProductList";
+import Header from "./Header/Header";
 
 const App: React.SFC = () => {
   return (
-    <ProductList />
+    <>
+      <Header />
+      <ProductList />
+    </>
   );
 };
 

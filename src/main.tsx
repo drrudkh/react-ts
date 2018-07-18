@@ -3,19 +3,16 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
 
-// IMPORT COMPONENTS
-
 import App from "./app/components/App";
-import reducers from './app/reducers/reducers';
-
-// IMPORT SASS`
-
+import reducer from "./app/reducers/shopping_cart_reducer";
 import "./scss/main.scss";
 
 const ROOT = document.getElementById("app");
+const STORE = createStore(reducer);
+STORE.subscribe(() => {console.log(STORE.getState())})
 
 ReactDOM.render(
-  <Provider store={createStore(reducers)}>
+  <Provider store={STORE}>
     <App />
   </Provider>,
   ROOT

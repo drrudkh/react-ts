@@ -1,0 +1,12 @@
+.header {
+    padding: 2rem 4rem;
+    background: green;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .logo {
+        color: white;
+        font-size: 2rem;
+    }
+}

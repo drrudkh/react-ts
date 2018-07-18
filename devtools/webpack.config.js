@@ -27,7 +27,7 @@ module.exports = {
         filename: '[name].[chunkhash].js'
     },
     resolve: {
-        extensions: ['.js', 'json', '.ts', '.tsx']
+        extensions: ['.js', '.json', '.ts', '.tsx']
     },
     devServer: {
         stats: 'minimal'

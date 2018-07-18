@@ -1,0 +1,21 @@
+.shopping-cart {
+    position: relative;
+  i {
+    font-size: 3rem;
+    color: white;
+    &:before {
+      font-family: "FontAwesome";
+    }
+  }
+
+  .cart-item-count {
+      width: 1.5rem;
+      height: 1.5rem;
+      background: red;
+      border-radius: 50%;
+      position: absolute;
+      bottom: -.5rem;
+      text-align: center;
+      color: white;
+  }
+}
