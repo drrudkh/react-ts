@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ShoppingCart from './ShoppingCart/ShoppingCart';
+import ShoppingCart from '../../containers/ShoppingCart/ShoppingCart';
 import './_header.scss';
 
 const Header: React.SFC = () => {
