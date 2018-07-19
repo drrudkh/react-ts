@@ -1,4 +1,4 @@
-import { ADD_TO_CART, REMOVE_FROM_CART } from "../actions/actions";
+import { ADD_TO_CART, REMOVE_FROM_CART } from "../actions/actionTypes";
 
 export default function shoppingCartReducer(
   state: Array<Object> = [],

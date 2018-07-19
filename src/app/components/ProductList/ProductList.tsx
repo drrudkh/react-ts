@@ -4,11 +4,10 @@ import Product from "../../containers/Product/Product";
 import books from "../../../books.json";
 import "./_product-list.scss";
 
-const ProductList: React.SFC = () => {
+const ProductList: React.SFC = (props) => {
   return (
     <ul className="product-list">
-      {books.map((item: any, index: number) => {
-        return (
+      {books.map((item: any) => (
           <Product
             title={item.title}
             author={item.author}
@@ -16,8 +15,7 @@ const ProductList: React.SFC = () => {
             language={item.language}
             key={item._id}
           />
-        );
-      })}
+      ))}
     </ul>
   );
 };

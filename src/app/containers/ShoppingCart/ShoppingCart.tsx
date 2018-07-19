@@ -20,7 +20,7 @@ class ShoppingCart extends React.Component<IProps> {
 
 const mapStateToProps = (state: any) => {
     return {
-        cartCount: state.length
+        cartCount: state.cart.length
     }
 }
 

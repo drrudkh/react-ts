@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 
+import { addToCart, showModal } from "../../store/actions/actionCreators";
 import "./_product.scss";
-import { addToCart } from "../../actions/actions";
 
 interface IProps {
   title: string;
@@ -11,13 +11,14 @@ interface IProps {
   language: string;
   key: number;
   onAddToCart: () => void;
+  onShowModal: () => void;
 }
 
 class Product extends React.Component<IProps> {
   render() {
     return (
       <li className="product-body">
-        <img src="http://thebookcovermachine.com/wp-content/uploads/2014/02/premade-exclusive-book-cover-601.jpg" />
+        <img src="http://thebookcovermachine.com/wp-content/uploads/2014/02/premade-exclusive-book-cover-601.jpg" onClick={this.props.onShowModal} />
         <h2>{this.props.title}</h2>
         <h3>{this.props.author}</h3>
         <h3>{this.props.language}</h3>
@@ -32,7 +33,8 @@ class Product extends React.Component<IProps> {
 
 const mapDispatchToProps = (dispatch: any, ownProps: any) => {
   return {
-    onAddToCart: () => dispatch(addToCart(ownProps))
+    onAddToCart: () => dispatch(addToCart(ownProps)),
+    onShowModal: () => dispatch(showModal(ownProps))
   };
 };
 

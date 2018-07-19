@@ -1,14 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import { createStore } from "redux";
+import { createStore, combineReducers } from "redux";
 
 import App from "./app/components/App";
-import reducer from "./app/reducers/shopping_cart_reducer";
+import shoppingCartReducer from "./app/store/reducers/shoppingCart";
+import modalReducer from './app/store/reducers/modal';
 import "./scss/main.scss";
 
 const ROOT = document.getElementById("app");
-const STORE = createStore(reducer);
+const ROOT_REDUCER = combineReducers({
+  cart: shoppingCartReducer,
+  modal: modalReducer
+})
+const STORE = createStore(ROOT_REDUCER);
+
 STORE.subscribe(() => {console.log(STORE.getState())})
 
 ReactDOM.render(
