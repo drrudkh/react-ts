@@ -1,4 +1,4 @@
-import { TOGGLE_MODAL } from "../actions/actionTypes";
+import { OPEN_MODAL, CLOSE_MODAL } from "../actions/actionTypes";
 
 export default function modalReducer(
   state = {
@@ -7,10 +7,14 @@ export default function modalReducer(
   action
 ) {
   switch (action.type) {
-    case TOGGLE_MODAL:
+    case OPEN_MODAL:
     return {
-        show: !state.show,
+        show: true,
         ...action.payload
+    }
+    case CLOSE_MODAL:
+    return {
+      show: false
     }  
     default:
       return state;

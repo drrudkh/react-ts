@@ -9,30 +9,44 @@
     left: 0;
     background: rgba(0, 0, 0, 0.7);
     z-index: 9999;
-
-    &.open {
-        body {
-            overflow: hidden;
-        }
-    }
 }
 
 .modal-content {
-    padding: 5rem;
+    flex: 0 1 50%;
+    padding: 2rem 5rem;
     background: white;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
     img {
         height: 30rem;
         width: 20rem;
     }
 }
 
+.close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 3rem;
+    cursor: pointer;
+}
+
 .modal-meta {
-    height: 100%;
     margin-left: 2rem;
     h2 {
         font-size: 3rem;
+        font-weight: 900;
+        line-height: 2.5rem;
+        text-transform: uppercase;
+        margin-bottom: 2rem;
+    }
+    p {
+        margin: 2rem 0;
+        font-style: italic;
+    }
+    .product-price {
+        margin: 0;
     }
 }

@@ -1,4 +1,4 @@
-import { ADD_TO_CART, REMOVE_FROM_CART, TOGGLE_MODAL } from "./actionTypes";
+import { ADD_TO_CART, REMOVE_FROM_CART, OPEN_MODAL, CLOSE_MODAL } from "./actionTypes";
 
 export function addToCart(item: any) {
   return {
@@ -16,9 +16,9 @@ export function removeFromCart() {
   };
 }
 
-export function showModal(item) {
+export function openModal(item) {
   return {
-    type: TOGGLE_MODAL,
+    type: OPEN_MODAL,
     payload: {
       item
     }
@@ -27,6 +27,6 @@ export function showModal(item) {
 
 export function closeModal() {
   return {
-    type: TOGGLE_MODAL
+    type: CLOSE_MODAL
   }
 }
