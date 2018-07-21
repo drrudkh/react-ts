@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { addToCart, closeModal } from "../../store/actions/actionCreators";
 import "./_modal-content.scss";
 
+
 interface IProps {
   product: any;
   showModal: boolean;
@@ -12,72 +13,75 @@ interface IProps {
 }
 
 class Modal extends React.Component<IProps> {
-  onKeyUp = () => {
-    const key = 27;
+
+  private onKeyPress = (event: KeyboardEvent): void => {
+    const key: number = 27;
+    if (event.keyCode === key) {
+      this.props.onCloseModal();
+    }
   };
 
-  onOutsideClick = (e) => {
-    if (e.target !== document.querySelector('.modal-overlay')) {
-      console.log(document.querySelector('.modal-overlay'))
+  private onOutsideClick = (event: MouseEvent): void => {
+    if (event.target === document.querySelector('.modal-overlay')) {
       this.props.onCloseModal();
     }
   }
 
   componentDidMount() {
-    window.addEventListener('keyup', this.onKeyUp, false)
-    document.addEventListener('click', this.onOutsideClick, false);
+    window.addEventListener('keydown', this.onKeyPress)
+    document.addEventListener('click', this.onOutsideClick);
   }
 
   componentWillUnmount() {
-    document.removeEventListener('click', this.onOutsideClick, false);
+    window.removeEventListener('keydown', this.onKeyPress);
+    document.removeEventListener('click', this.onOutsideClick);
   }
 
   render() {
+    const { title, author, language, pages } = this.props.product;
     return (
       <>
-          <div className="modal-overlay">
-            <div className="modal-content">
-              <i
-                className="fa fa-times close"
-                aria-hidden="true"
-                onClick={this.props.onCloseModal}
-              />
-              <img src="http://thebookcovermachine.com/wp-content/uploads/2014/02/premade-exclusive-book-cover-601.jpg" />
-              <div className="modal-meta">
-                <h2>{this.props.product.title}</h2>
-                <h3>{this.props.product.author}</h3>
-                <h3>{this.props.product.language}</h3>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum
-                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                  cupidatat non proident, sunt in culpa qui officia deserunt
-                  mollit anim id est laborum.
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <i
+              className="fa fa-times close"
+              aria-hidden="true"
+              onClick={this.props.onCloseModal}
+            />
+            <img src="http://thebookcovermachine.com/wp-content/uploads/2014/02/premade-exclusive-book-cover-601.jpg" />
+            <div className="modal-meta">
+              <h2>{title}</h2>
+              <h3>{author}</h3>
+              <h3>{language}</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                irure dolor in reprehenderit in voluptate velit esse cillum
+                dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                cupidatat non proident, sunt in culpa qui officia deserunt
+                mollit anim id est laborum.
                 </p>
-                <h2 className="product-price">{`${
-                  this.props.product.pages
-                } $`}</h2>
-                <button type="button" onClick={this.props.onAddToCart}>
-                  Buy now
+              <h2 className="product-price">{`${pages} $`}</h2>
+              <button type="button" onClick={this.props.onAddToCart}>
+                Buy now
                 </button>
-              </div>
             </div>
           </div>
+        </div>
       </>
     );
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state: any) => {
   return {
     product: state.modal.item
   };
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch: any, ownProps: any) => {
   return {
     onAddToCart: () => dispatch(addToCart(ownProps)),
     onCloseModal: () => dispatch(closeModal())

@@ -1,10 +1,6 @@
 {
     "compilerOptions": {
-<<<<<<< HEAD
-        "noImplicitAny": true,
-=======
         // "noImplicitAny": true,
->>>>>>> ec704931f8f3412738b69f80e2eeea0299eb808c
         "sourceMap": true,
         "resolveJsonModule": true,
         "esModuleInterop": true,

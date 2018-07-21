@@ -19,7 +19,7 @@ const App: React.SFC<IProps> = props => {
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state: any) => {
   return {
     renderModal: state.modal.show
   }

@@ -16,7 +16,7 @@ export function removeFromCart() {
   };
 }
 
-export function openModal(item) {
+export function openModal(item: any) {
   return {
     type: OPEN_MODAL,
     payload: {
