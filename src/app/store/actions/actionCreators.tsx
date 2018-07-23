@@ -1,8 +1,8 @@
-import { ADD_TO_CART, REMOVE_FROM_CART, OPEN_MODAL, CLOSE_MODAL } from "./actionTypes";
+import * as types from "./actionTypes";
 
 export function addToCart(item: any) {
   return {
-    type: ADD_TO_CART,
+    type: types.ADD_TO_CART,
     payload: {
       item
     }
@@ -11,14 +11,14 @@ export function addToCart(item: any) {
 
 export function removeFromCart() {
   return {
-    type: REMOVE_FROM_CART,
+    type: types.REMOVE_FROM_CART,
     payload: {}
   };
 }
 
 export function openModal(item: any) {
   return {
-    type: OPEN_MODAL,
+    type: types.OPEN_MODAL,
     payload: {
       item
     }
@@ -27,6 +27,12 @@ export function openModal(item: any) {
 
 export function closeModal() {
   return {
-    type: CLOSE_MODAL
+    type: types.CLOSE_MODAL
+  }
+}
+
+export function search(input) {
+  return {
+    type: types.SEARCH
   }
 }
