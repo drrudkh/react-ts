@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 
 import { addToCart, closeModal } from "../../store/actions/actionCreators";
-import "./_modal-content.scss";
+import "./_modal.scss";
 
 
 interface IProps {
@@ -15,8 +15,8 @@ interface IProps {
 class Modal extends React.Component<IProps> {
 
   private onKeyPress = (event: KeyboardEvent): void => {
-    const key: number = 27;
-    if (event.keyCode === key) {
+    const KEY: number = 27;
+    if (event.keyCode === KEY) {
       this.props.onCloseModal();
     }
   };
