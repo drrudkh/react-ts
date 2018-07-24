@@ -20,7 +20,7 @@ class SearchBar extends React.Component<IProps> {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onInputChange: event => dispatch(search(event.target.value))
+    onInputChange: event => dispatch(search(event.target.value.toLowerCase()))
   };
 };
 
