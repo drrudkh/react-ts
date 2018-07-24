@@ -16,23 +16,9 @@ export function removeFromCart() {
   };
 }
 
-export function openModal(item: any) {
-  return {
-    type: types.OPEN_MODAL,
-    payload: {
-      item
-    }
-  };
-}
-
-export function closeModal() {
-  return {
-    type: types.CLOSE_MODAL
-  }
-}
-
 export function search(input) {
   return {
-    type: types.SEARCH
+    type: types.SEARCH,
+    payload: input
   }
 }

@@ -1,29 +1,25 @@
 import React from "react";
-import { connect } from "react-redux";
 
-import { addToCart, closeModal } from "../../store/actions/actionCreators";
 import "./_modal.scss";
-
 
 interface IProps {
   product: any;
-  showModal: boolean;
-  onCloseModal: () => void;
-  onAddToCart: () => void;
+  toggleModal: () => void
+  addToCart: () => void
 }
 
-class Modal extends React.Component<IProps> {
+export default class Modal extends React.Component<IProps> {
 
   private onKeyPress = (event: KeyboardEvent): void => {
     const KEY: number = 27;
     if (event.keyCode === KEY) {
-      this.props.onCloseModal();
+      this.props.toggleModal();
     }
   };
 
   private onOutsideClick = (event: MouseEvent): void => {
     if (event.target === document.querySelector('.modal-overlay')) {
-      this.props.onCloseModal();
+      this.props.toggleModal();
     }
   }
 
@@ -40,13 +36,12 @@ class Modal extends React.Component<IProps> {
   render() {
     const { title, author, language, pages } = this.props.product;
     return (
-      <>
         <div className="modal-overlay">
           <div className="modal-content">
             <i
               className="fa fa-times close"
               aria-hidden="true"
-              onClick={this.props.onCloseModal}
+              onClick={this.props.toggleModal}
             />
             <img src="http://thebookcovermachine.com/wp-content/uploads/2014/02/premade-exclusive-book-cover-601.jpg" />
             <div className="modal-meta">
@@ -64,31 +59,13 @@ class Modal extends React.Component<IProps> {
                 mollit anim id est laborum.
                 </p>
               <h2 className="product-price">{`${pages} $`}</h2>
-              <button type="button" onClick={this.props.onAddToCart}>
+              <button type="button" onClick={this.props.addToCart}>
                 Buy now
                 </button>
             </div>
           </div>
         </div>
-      </>
     );
   }
 }
 
-const mapStateToProps = (state: any) => {
-  return {
-    product: state.modal.item
-  };
-};
-
-const mapDispatchToProps = (dispatch: any, ownProps: any) => {
-  return {
-    onAddToCart: () => dispatch(addToCart(ownProps)),
-    onCloseModal: () => dispatch(closeModal())
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Modal);

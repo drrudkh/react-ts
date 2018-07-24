@@ -1,28 +1,15 @@
 import React from "react";
-import { connect } from "react-redux";
 
 import Header from "./Header/Header";
-import ProductList from "../components/ProductList/ProductList";
-import Modal from "./Modal/Modal";
+import ProductList from "../containers/ProductList/ProductList";
 
-interface IProps {
-  renderModal: boolean;
-}
-
-const App: React.SFC<IProps> = props => {
+const App: React.SFC = props => {
   return (
     <>
       <Header />
       <ProductList />
-      {props.renderModal && <Modal />}
     </>
   );
 };
 
-const mapStateToProps = (state: any) => {
-  return {
-    renderModal: state.modal.show
-  }
-};
-
-export default connect(mapStateToProps)(App);
+export default App;

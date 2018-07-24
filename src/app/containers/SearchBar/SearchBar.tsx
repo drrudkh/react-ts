@@ -1,18 +1,30 @@
-// import React from "react";
-// import { connect } from "react-redux";
+import React from "react";
+import { connect } from "react-redux";
 
-// class SearchBar extends React.Component {
-//   private sanitizeInput = (string: string): string => {
-//     return string
-//       .normalize("NFD")
-//       .replace(/[\u0300-\u036f]/g, "")
-//       .toLowerCase();
-//   };
+import { search } from "../../store/actions/actionCreators";
+interface IProps {
+  onInputChange: () => void;
+}
 
-//   private checkTerm = (string: string): boolean => {
-//     return this.sanitizeInput(string).includes(this.state.searchTerm)
-//       ? true
-//       : false;
-//   };
-// }
+class SearchBar extends React.Component<IProps> {
+  render() {
+    return (
+      <input
+        type="text"
+        placeholder="Search by book, author"
+        onChange={this.props.onInputChange}
+      />
+    );
+  }
+}
 
+const mapDispatchToProps = dispatch => {
+  return {
+    onInputChange: event => dispatch(search(event.target.value))
+  };
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(SearchBar);
