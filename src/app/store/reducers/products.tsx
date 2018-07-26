@@ -1,9 +1,6 @@
 import { SEARCH } from "../actions/actionTypes";
 
-import books from "../../../books.json";
-
 const INITIAL_STATE = {
-  productsDisplayed: books,
   searchTerm: ""
 };
 

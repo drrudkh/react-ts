@@ -1,19 +1,28 @@
-import React from "react";
-import { connect } from "react-redux";
+import React from 'react';
+import axios from 'axios';
+import { connect } from 'react-redux';
 
-import Product from "../Product/Product";
-import "./_product-list.scss";
+import Product from '../Product/Product';
+import Spinner from '../../components/Spinner/Spinner';
+import './_product-list.scss';
 
 interface IProps {
-  books: any;
   searchTerm: string;
 }
 
-class ProductList extends React.Component<IProps> {
+interface IState {
+  books: Array<Object>;
+}
+
+class ProductList extends React.Component<IProps, IState> {
+  public readonly state: IState = {
+    books: []
+  };
+
   private sanitizeString = (string: string): string => {
     return string
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
       .toLowerCase();
   };
 
@@ -23,25 +32,35 @@ class ProductList extends React.Component<IProps> {
       : false;
   };
 
+  componentDidMount() {
+    setTimeout(() => {
+      axios.get('http://localhost:8080/src/books.json').then(resp => {
+        this.setState({ books: resp.data });
+      });
+    }, 2000);
+  }
+
   render() {
     return (
-      <ul className="product-list">
-        {this.props.books
-          .filter((item: any) => {
-            return (
-              this.checkForTermInString(item.author) ||
-              this.checkForTermInString(item.title)
-            );
-          })
-          .map((item: any) => <Product data={item} key={item._id} />)}
-      </ul>
+      <>
+        {!this.state.books.length && <Spinner />}
+        <ul className="product-list">
+          {this.state.books
+            .filter((item: any) => {
+              return (
+                this.checkForTermInString(item.author) ||
+                this.checkForTermInString(item.title)
+              );
+            })
+            .map((item: any) => <Product data={item} key={item._id} />)}
+        </ul>
+      </>
     );
   }
 }
 
 const mapStateToProps = state => {
   return {
-    books: state.products.productsDisplayed,
     searchTerm: state.products.searchTerm
   };
 };
