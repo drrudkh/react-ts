@@ -1,9 +1,10 @@
-import React from "react";
-import { connect } from "react-redux";
+import React from 'react';
+import { connect } from 'react-redux';
 
-import { addToCart } from "../../store/actions/actionCreators";
-import Modal from "../../components/Modal/Modal";
-import "./_product.scss";
+import { addToCart } from '../../store/actions/actionCreators';
+import Modal from '../../components/Modal_v2/Modal';
+import ProductDescription from './ProductDescription/ProductDescription';
+import './_product.scss';
 
 interface IProps {
   data: any;
@@ -26,25 +27,34 @@ class Product extends React.Component<IProps, IState> {
   };
 
   render() {
-    const { title, author, language, pages } = this.props.data;
     return (
       <>
         {this.state.showModal && (
-          <Modal
-            product={this.props.data}
+          <Modal toggleModal={this.onToggleModal}>
+            <Modal.Header>
+              <h1>Modal header</h1>
+            </Modal.Header>
+            <Modal.Body>
+              <ProductDescription
+                metadata={this.props.data}
+                toggleModal={this.onToggleModal}
+                addToCart={this.props.onAddToCart}
+              />
+            </Modal.Body>
+            <Modal.Footer>
+              <h1>Modal footer</h1>
+              <button type="button" onClick={this.props.onAddToCart}>
+                Buy now
+              </button>
+            </Modal.Footer>
+          </Modal>
+        )}
+        <li>
+          <ProductDescription
+            metadata={this.props.data}
             toggleModal={this.onToggleModal}
             addToCart={this.props.onAddToCart}
           />
-        )}
-        <li className="product-body">
-          <img
-            src="http://thebookcovermachine.com/wp-content/uploads/2014/02/premade-exclusive-book-cover-601.jpg"
-            onClick={this.onToggleModal}
-          />
-          <h2>{title}</h2>
-          <h3>{author}</h3>
-          <h3>{language}</h3>
-          <h2 className="product-price">{`${pages} $`}</h2>
           <button type="button" onClick={this.props.onAddToCart}>
             Buy now
           </button>
@@ -56,7 +66,7 @@ class Product extends React.Component<IProps, IState> {
 
 const mapDispatchToProps = (dispatch: any, ownProps: any) => {
   return {
-    onAddToCart: () => dispatch(addToCart(ownProps)),
+    onAddToCart: () => dispatch(addToCart(ownProps))
   };
 };
 

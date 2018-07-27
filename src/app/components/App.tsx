@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
-import Header from "./Header/Header";
-import ProductList from "../containers/ProductList/ProductList";
+import Header from './Header/Header';
+import ProductList from '../containers/ProductList/ProductList';
 
 const App: React.SFC = props => {
   return (
