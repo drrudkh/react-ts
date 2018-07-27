@@ -37,7 +37,7 @@ class ProductList extends React.Component<IProps, IState> {
       axios.get('http://localhost:8080/src/books.json').then(resp => {
         this.setState({ books: resp.data });
       });
-    }, null);
+    }, 2000);
   }
 
   render() {

@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
-export default class ModalFooter extends React.Component {
-    render() {
-        return <>{this.props.children}</>
-    }
-}
+const ModalFooter: React.SFC = props => {
+  return <>{props.children}</>;
+};
+
+export default ModalFooter;

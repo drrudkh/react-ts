@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import { search } from "../../store/actions/actionCreators";
 interface IProps {
-  onInputChange: () => void;
+  onInputChange: (event: any) => void;
 }
 
 class SearchBar extends React.Component<IProps> {
@@ -20,7 +20,7 @@ class SearchBar extends React.Component<IProps> {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onInputChange: event => dispatch(search(event.target.value.toLowerCase()))
+    onInputChange: (event: any) => dispatch(search(event.target.value.toLowerCase()))
   };
 };
 

@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { addToCart } from '../../store/actions/actionCreators';
 import Modal from '../../components/Modal_v2/Modal';
 import ProductDescription from './ProductDescription/ProductDescription';
+import { addToCart } from '../../store/actions/actionCreators';
 import './_product.scss';
 
 interface IProps {

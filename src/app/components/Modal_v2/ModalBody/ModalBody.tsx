@@ -1,11 +1,9 @@
-import React from 'react';
+import React from "react";
 
-import './_modal-body.scss';
+import "./_modal-body.scss";
 
-export default class ModalBody extends React.Component {
-    render() {
-        return (
-            <div className="modal-body">{this.props.children}</div>
-        )
-    }
-}
+const ModalBody: React.SFC = props => {
+  return <div className="modal-body">{props.children}</div>;
+};
+
+export default ModalBody;

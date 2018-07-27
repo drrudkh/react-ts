@@ -4,15 +4,15 @@ interface IProps {
   toggleModal: () => void
 }
 
-export default class ModalHeader extends React.Component<IProps> {
-  render() {
+const ModalHeader: React.SFC<IProps> = props =>  {
     return (
       <div className="modal-header">
-        <button className="trigger" onClick={this.props.toggleModal}>
+        <button className="trigger" onClick={props.toggleModal}>
           <i className="fa fa-times close" aria-hidden="true" />
         </button>
-        {this.props.children}
+        {props.children}
       </div>
     );
-  }
 }
+
+export default ModalHeader;
