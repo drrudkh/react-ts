@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode, ReactElement } from 'react';
 
 import ModalHeader from './ModalHeader/ModalHeader';
 import ModalBody from './ModalBody/ModalBody';
@@ -6,7 +6,7 @@ import ModalFooter from './ModalFooter/ModalFooter';
 import './_modal.scss';
 
 interface IProps {
-  children: any;
+  children: ReactNode;
   toggleModal: () => void;
 }
 
@@ -39,10 +39,14 @@ export default class Modal extends React.Component<IProps> {
   }
 
   render() {
+  /**
+ * @function React.Children.map works on either an array of elements or a single element
+ * whereas using @function this.props.children.map will only work on array of elements.
+ */
     return (
       <div className="modal-overlay">
         <div className="modal-content">
-            {React.Children.map(this.props.children, (childElem: any) => {
+            {React.Children.map(this.props.children, (childElem: ReactElement<IProps>) => {
                 return React.cloneElement(childElem, {
                     toggleModal: this.props.toggleModal
                 })
