@@ -4,14 +4,14 @@ import { Provider } from "react-redux";
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 
 import App from "./app/components/App";
-import shoppingCartReducer from "./app/store/reducers/shoppingCart";
+import cartReducer from "./app/store/reducers/cart";
 import productsReducer from './app/store/reducers/products';
 import logger from './app/store/middleware/logger';
 import "./scss/main.scss";
 
 const ROOT = document.getElementById("app");
 const ROOT_REDUCER = combineReducers({
-  cart: shoppingCartReducer,
+  cart: cartReducer,
   products: productsReducer
 })
 const COMPOSE_ENHANCERS = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

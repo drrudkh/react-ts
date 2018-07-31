@@ -3,9 +3,8 @@ import * as types from "./types";
 export function addToCart(item: any) {
   return {
     type: types.ADD_TO_CART,
-    payload: {
-      item
-    }
+    payload: item
+
   };
 }
 

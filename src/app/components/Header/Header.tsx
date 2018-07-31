@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ShoppingCart from '../../containers/ShoppingCart/ShoppingCart';
+import Cart from '../../containers/Cart/Cart';
 import SearchBar from '../../containers/SearchBar/SearchBar';
 import './_header.scss';
 
@@ -9,7 +9,7 @@ const Header: React.SFC = () => {
         <header className="header">
             <a href="#" className="logo">Book Webstore</a>
             <SearchBar />
-            <ShoppingCart />
+            <Cart />
         </header>
     )
 }
