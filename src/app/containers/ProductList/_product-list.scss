@@ -1,4 +1,12 @@
 .product-list {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-around;
+    background-color: #E6E6E6;
+
+    li {
+        flex: 0 1 15%;
+        background-color: white;
+        margin: 2rem 0;
+    }
 }

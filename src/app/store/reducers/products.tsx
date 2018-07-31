@@ -1,10 +1,10 @@
-import { SEARCH } from "../actions/actionTypes";
+import { SEARCH } from "../actions/types";
 
 const INITIAL_STATE = {
   searchTerm: ""
 };
 
-export default function productsReducer(state = INITIAL_STATE, action) {
+export default function(state = INITIAL_STATE, action) {
   switch (action.type) {
     case SEARCH: {
       return {

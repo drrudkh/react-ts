@@ -32,6 +32,13 @@ class ProductList extends React.Component<IProps, IState> {
       : false;
   };
 
+  private checkForItemInArr = (item: any): boolean => {
+    return (
+      this.checkForTermInString(item.author) ||
+      this.checkForTermInString(item.title)
+    );
+  };
+
   componentDidMount() {
     setTimeout(() => {
       axios.get('http://localhost:8080/src/books.json').then(resp => {
@@ -46,12 +53,7 @@ class ProductList extends React.Component<IProps, IState> {
         {!this.state.books.length && <Spinner />}
         <ul className="product-list">
           {this.state.books
-            .filter((item: any) => {
-              return (
-                this.checkForTermInString(item.author) ||
-                this.checkForTermInString(item.title)
-              );
-            })
+            .filter(this.checkForItemInArr)
             .map((item: any) => <Product data={item} key={item._id} />)}
         </ul>
       </>

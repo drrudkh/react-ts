@@ -2,7 +2,7 @@ import React from 'react';
 
 import './_spinner.scss';
 
-const Spinner: React.SFC = props => (
+const Spinner: React.SFC = () => (
   <div className="sk-fading-circle">
     <div className="sk-circle1 sk-circle" />
     <div className="sk-circle2 sk-circle" />

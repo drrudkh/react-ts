@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { search } from "../../store/actions/actionCreators";
+import { search } from "../../store/actions/creators";
 interface IProps {
   onInputChange: (event: any) => void;
 }
