@@ -5,6 +5,7 @@ import './_cart-item.scss';
 
 interface IProps {
   data: any;
+  qty: number;
 }
 
 class CartItem extends React.Component<IProps> {
@@ -15,6 +16,8 @@ class CartItem extends React.Component<IProps> {
         <div className="metadata">
           <h2>{this.props.data.title}</h2>
           <h3>by {this.props.data.author}</h3>
+          <h4>Qty: {this.props.qty}</h4>
+          <button>Remove</button>
         </div>
       </li>
     );

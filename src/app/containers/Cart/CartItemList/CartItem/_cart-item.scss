@@ -2,6 +2,9 @@
     display: flex;
     margin: 4rem 0;
     .metadata {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
         text-align: left;
         padding: 0;
         margin-left: 1rem;
@@ -16,5 +19,8 @@
     h3 {
         margin: 0;
         font-size: 1.5rem;
+    }
+    h4 {
+        color: red;
     }
 }

@@ -10,8 +10,8 @@ const CartItemList: React.SFC<IProps> = props => {
   return (
     <ul>
       {props.data.map(item => {
-          console.log(item)
-        return <CartItem key={item.data._id} data={item.data} />;
+        console.log(item)
+        return <CartItem key={item.data._id} data={item.data} qty={item.count}/>;
       })}
     </ul>
   );
