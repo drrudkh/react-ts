@@ -8,10 +8,10 @@ export function addToCart(item: any) {
   };
 }
 
-export function removeFromCart() {
+export function removeFromCart(item: any) {
   return {
     type: types.REMOVE_FROM_CART,
-    payload: {}
+    payload: item
   };
 }
 

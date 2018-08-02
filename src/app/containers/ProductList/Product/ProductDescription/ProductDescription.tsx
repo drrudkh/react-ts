@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { IProductDetailsProps } from '../../../interfaces/product_details.interface';
+import { IProductDetailsProps } from '../../../../interfaces/product_details.interface';
 import './_product-description.scss';
 
 const ProductDescription: React.SFC<IProductDetailsProps> = props => {

@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import Modal from '../../components/Modal_v2/Modal';
+import Modal from '../../../components/Modal_v2/Modal';
 import ProductDescription from './ProductDescription/ProductDescription';
-import { IProductDetailsProps } from '../../interfaces/product_details.interface';
-import { addToCart } from '../../store/actions/creators';
+import { IProductDetailsProps } from '../../../interfaces/product_details.interface';
+import { addToCart } from '../../../store/actions/creators';
 import './_product.scss';
 
 interface IState {
@@ -23,13 +23,14 @@ class Product extends React.Component<IProductDetailsProps, IState> {
   };
 
   render() {
+    const { data, onAddToCart } = this.props;
     return (
       <>
         {this.state.showModal && (
           <Modal onToggleModal={this.onToggleModal}>
             <Modal.Header onToggleModal={this.onToggleModal} />
             <Modal.Body>
-              <ProductDescription data={this.props.data}>
+              <ProductDescription data={data}>
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -43,19 +44,19 @@ class Product extends React.Component<IProductDetailsProps, IState> {
               </ProductDescription>
             </Modal.Body>
             <Modal.Footer>
-              <button type="button" onClick={this.props.onAddToCart}>
+              <button type="button" onClick={onAddToCart}>
                 Buy now
               </button>
             </Modal.Footer>
           </Modal>
         )}
-        <li>
+        <li className="product">
           <ProductDescription
-            data={this.props.data}
+            data={data}
             onToggleModal={this.onToggleModal}
-            onAddToCart={this.props.onAddToCart}
+            onAddToCart={onAddToCart}
           />
-          <button type="button" onClick={this.props.onAddToCart}>
+          <button type="button" onClick={onAddToCart}>
             Buy now
           </button>
         </li>

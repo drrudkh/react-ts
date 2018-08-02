@@ -41,16 +41,23 @@ class ShoppingCart extends React.Component<IProps, IState> {
             </Modal.Body>
             {this.props.itemsInCart.length > 0 && (
               <Modal.Footer>
-                <button type="button">Checkout</button>
+                <h2>
+                  Total price: {this.props.itemsInCart.reduce((acc, item) => {
+                    return acc + item.qty * item.data.pages;
+                  }, 0)}
+                  $
+                </h2>
               </Modal.Footer>
             )}
           </Modal>
         )}
         <div className="shopping-cart" onClick={this.onToggleModal}>
           <i className="fa fa-shopping-cart" />
-          <div className="cart-item-count">{this.props.itemsInCart.reduce((acc, item) => {
-            return acc + item.count;
-          }, 0)}</div>
+          <div className="cart-item-count">
+            {this.props.itemsInCart.reduce((acc, item) => {
+              return acc + item.qty;
+            }, 0)}
+          </div>
         </div>
       </>
     );

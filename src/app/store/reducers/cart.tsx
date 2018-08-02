@@ -7,14 +7,29 @@ export default function(state: Array<Object> = [], action: any) {
       return [...state, action.payload].reduce((acc, value) => {
         let key = value.data._id;
         if (!helper[key]) {
-          helper[key] = Object.assign({ count: 1 }, value);
+          helper[key] = Object.assign({ qty: 1 }, value);
           acc.push(helper[key]);
         } else {
-          helper[key].count++;
+          helper[key].qty++;
         }
 
         return acc;
       }, []);
+    case REMOVE_FROM_CART:
+      return state
+        .map((item: any) => {
+          if (item.data._id === action.payload.data._id) {
+            return { ...item, qty: item.qty - 1 };
+          } else {
+            return item;
+          }
+        })
+        .filter((item: any) => {
+          if (item.data._id === action.payload.data._id && item.qty < 1) {
+            return false;
+          }
+          return true;
+        });
     default:
       return state;
   }

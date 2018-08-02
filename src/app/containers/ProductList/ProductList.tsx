@@ -1,8 +1,8 @@
 import React from 'react';
-import axios from 'axios';
 import { connect } from 'react-redux';
+import axios from 'axios';
 
-import Product from '../Product/Product';
+import Product from './Product/Product';
 import Spinner from '../../components/Spinner/Spinner';
 import './_product-list.scss';
 
