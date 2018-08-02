@@ -1,17 +1,9 @@
-import { SEARCH } from "../actions/types";
+import { FETCH_DATA } from "../actions/types";
 
-const INITIAL_STATE = {
-  searchTerm: ""
-};
-
-export default function(state = INITIAL_STATE, action) {
+export default function(state = [], action) {
   switch (action.type) {
-    case SEARCH: {
-      return {
-        ...state,
-        searchTerm: action.payload
-      };
-    }
+    case FETCH_DATA:
+      return [...state, action.payload]
     default:
       return state;
   }

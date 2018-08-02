@@ -1,9 +1,9 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import axios from 'axios';
 
 import Product from './Product/Product';
 import Spinner from '../../components/Spinner/Spinner';
+import SearchBar from '../../components/SearchBar/SearchBar';
 import './_product-list.scss';
 
 interface IProps {
@@ -12,11 +12,19 @@ interface IProps {
 
 interface IState {
   books: Array<Object>;
+  searchTerm: string;
 }
 
-class ProductList extends React.Component<IProps, IState> {
+export default class ProductList extends React.Component<{}, IState> {
   public readonly state: IState = {
-    books: []
+    books: [],
+    searchTerm: ''
+  };
+
+  private onInputChange = (event): void => {
+    this.setState({
+      searchTerm: event.target.value
+    });
   };
 
   private sanitizeString = (string: string): string => {
@@ -27,7 +35,7 @@ class ProductList extends React.Component<IProps, IState> {
   };
 
   private checkForTermInString = (string: string): boolean => {
-    return this.sanitizeString(string).includes(this.props.searchTerm)
+    return this.sanitizeString(string).includes(this.state.searchTerm)
       ? true
       : false;
   };
@@ -51,6 +59,7 @@ class ProductList extends React.Component<IProps, IState> {
     return (
       <>
         {!this.state.books.length && <Spinner />}
+        <SearchBar onInputChange={this.onInputChange} />
         <ul className="product-list">
           {this.state.books
             .filter(this.checkForItemInArr)
@@ -60,11 +69,3 @@ class ProductList extends React.Component<IProps, IState> {
     );
   }
 }
-
-const mapStateToProps = state => {
-  return {
-    searchTerm: state.products.searchTerm
-  };
-};
-
-export default connect(mapStateToProps)(ProductList);
