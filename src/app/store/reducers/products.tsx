@@ -1,9 +1,11 @@
 import { FETCH_DATA } from "../actions/types";
 
-export default function(state = [], action) {
+const INITIAL_STATE: Array<Object> = [];
+
+export default function(state = INITIAL_STATE, action) {
   switch (action.type) {
     case FETCH_DATA:
-      return [...state, action.payload]
+      return action.payload
     default:
       return state;
   }

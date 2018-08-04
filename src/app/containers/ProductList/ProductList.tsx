@@ -1,23 +1,23 @@
 import React from 'react';
-import axios from 'axios';
+import { connect } from 'react-redux';
 
 import Product from './Product/Product';
 import Spinner from '../../components/Spinner/Spinner';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import './_product-list.scss';
+import { requestData } from '../../store/actions/creators';
 
 interface IProps {
-  searchTerm: string;
+  requestData: () => void;
+  books: Array<Object>;
 }
 
 interface IState {
-  books: Array<Object>;
   searchTerm: string;
 }
 
-export default class ProductList extends React.Component<{}, IState> {
+class ProductList extends React.Component<IProps, IState> {
   public readonly state: IState = {
-    books: [],
     searchTerm: ''
   };
 
@@ -48,20 +48,16 @@ export default class ProductList extends React.Component<{}, IState> {
   };
 
   componentDidMount() {
-    setTimeout(() => {
-      axios.get('http://localhost:8080/src/books.json').then(resp => {
-        this.setState({ books: resp.data });
-      });
-    }, null);
+    this.props.requestData();
   }
 
   render() {
     return (
       <>
-        {!this.state.books.length && <Spinner />}
         <SearchBar onInputChange={this.onInputChange} />
+        {!this.props.books.length && <Spinner />}
         <ul className="product-list">
-          {this.state.books
+          {this.props.books
             .filter(this.checkForItemInArr)
             .map((item: any) => <Product data={item} key={item._id} />)}
         </ul>
@@ -69,3 +65,17 @@ export default class ProductList extends React.Component<{}, IState> {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    books: state.products
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    requestData: () => dispatch(requestData())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductList);

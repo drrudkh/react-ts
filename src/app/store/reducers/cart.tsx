@@ -1,6 +1,8 @@
 import { ADD_TO_CART, REMOVE_FROM_CART } from '../actions/types';
 
-export default function(state: Array<Object> = [], action: any) {
+const INITIAL_STATE: Array<Object> = [];
+
+export default function(state = INITIAL_STATE, action: any) {
   switch (action.type) {
     case ADD_TO_CART:
       const helper = {};
@@ -18,14 +20,14 @@ export default function(state: Array<Object> = [], action: any) {
     case REMOVE_FROM_CART:
       return state
         .map((item: any) => {
-          if (item.data._id === action.payload.data._id) {
+          if (item.data._id === action.payload._id) {
             return { ...item, qty: item.qty - 1 };
           } else {
             return item;
           }
         })
         .filter((item: any) => {
-          if (item.data._id === action.payload.data._id && item.qty < 1) {
+          if (item.data._id === action.payload._id && item.qty < 1) {
             return false;
           }
           return true;
